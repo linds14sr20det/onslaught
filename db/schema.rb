@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314195432) do
+ActiveRecord::Schema.define(version: 20180219192742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,23 +24,23 @@ ActiveRecord::Schema.define(version: 20180314195432) do
   end
 
   create_table "cohorts", force: :cascade do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "descriptive_date"
+    t.boolean  "active",           default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.boolean  "active",           default: false
-    t.string   "date_description"
-    t.string   "descriptive_date"
   end
 
   create_table "systems", force: :cascade do |t|
     t.string   "title"
+    t.string   "descriptive_date"
     t.string   "description"
     t.integer  "max_players"
+    t.integer  "cost"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "cohort_id"
-    t.string   "date_description"
-    t.integer  "cost"
-    t.string   "descriptive_date"
     t.index ["cohort_id"], name: "index_systems_on_cohort_id", using: :btree
   end
 
@@ -57,12 +57,6 @@ ActiveRecord::Schema.define(version: 20180314195432) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-  end
-
-  create_table "website_configurations", force: :cascade do |t|
-    t.string   "site_intro"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "attachments", "systems"
