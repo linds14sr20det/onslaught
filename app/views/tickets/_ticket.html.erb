@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12 ticket">
+    <div class="ticket-card">
+      <img class="ticket-thumb-index" src="<%= "#{ticket.first_image} (#{ticket})" %>">
+      <div class="ticket-card-content">
+        <div class="ticket-title">
+          <%= link_to(ticket.title, ticket_path(ticket)) %>
+        </div>
+        <small><p> <%= "Event size: #{ticket.max_players}" %></p></small>
+        <%= truncate(strip_tags(ticket.description), :length => 120)  %>
+      </div>
+    </div>
+  </div>
+</div>

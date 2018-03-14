@@ -28,3 +28,7 @@ en:
     team_member:
       titles:
         other: "Other (Please Specify)"
+  seo:
+      home: "Welcome to Edmonton Onslaught! This is the home of Edmonton's premiere table top wargaming tournament."
+      tickets: "Shop for your tickets here."
+      info: "Information about the event here."

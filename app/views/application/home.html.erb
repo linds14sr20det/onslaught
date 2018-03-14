@@ -1,8 +1,26 @@
-<div class="center jumbotron sg-home">
-  <% unless current_user.nil? %>
-    <%= link_to t("home.cta_manage_cohort"), cohorts_path, class: "cta-submit btn btn-lg btn-primary"%>
-  <% end %>
-</div>
+<% provide(:title, 'Welcome') %>
+<% provide(:meta_description, t('seo.home')) %>
+<%= link_to tickets_path, class: "banner-link" do %>
+  <div class="sg-home tickets"><p>tickets</p></div>
+<% end %>
+<div class="sg-spacer"></div>
+<%= link_to "#", class: "banner-link" do %>
+  <div class="sg-home info"><p>info</p></div>
+<% end %>
 
-<div><%= t("home.main_text")%></div>
+<!--This is a dirty hack to get the vh to expand when scrolling down-->
+<script>
+    $(document).ready(function() {
+        setHeight();
+    });
 
+    $( window ).on( "orientationchange", function( event ) {
+        setHeight();
+    });
+
+    function setHeight () {
+        setTimeout(function () {
+            $('.container').css({height: window.innerHeight - 50});
+        }, 250);
+    }
+</script>

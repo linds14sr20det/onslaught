@@ -1,0 +1,10 @@
+<% provide(:title, 'Tickets') %>
+<% provide(:meta_description, t('seo.tickets')) %>
+<% unless @tickets.nil? %>
+  <% @tickets.each do |ticket| %>
+    <%= render :partial => 'ticket', :locals => {:ticket => ticket} %>
+  <% end %>
+  <div class="row">
+    <div class="col-lg-12"><%= will_paginate @tickets %></div>
+  </div>
+<% end %>

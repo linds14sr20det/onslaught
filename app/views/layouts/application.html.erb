@@ -2,19 +2,50 @@
 <html>
 <head>
   <title><%= full_title(yield(:title)) %></title>
+  <meta name="description" content="<%= yield(:meta_description) %>">
+  <link rel="icon" type="image/png" href="<%= image_path "hobbynight70.png"%>">
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all',
                              'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1" />
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= render 'layouts/header' %>
-  <div class="container">
-    <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
-    <%= yield %>
-  </div>
+<%= render 'layouts/header' %>
+<div class="container">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
+  <%= yield %>
+</div>
+<%= render 'layouts/footer' %>
+<script>
+    $.fraola_initializer = {
+        toolbarSticky: true,
+        toolbarStickyOffset: 50,
+        key: 'PG-10dpj1xB3wwdqwI2J3B10B7B7A5F4igqknsfxyG5hcj1==',
+        imageUploadToS3: <%= @aws_data.to_json.html_safe %>,
+        toolbarButtons: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', '|', 'insertLink', 'insertImage'],
+        toolbarButtonsMD: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', '|', 'insertLink', 'insertImage'],
+        toolbarButtonsSM: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', '|', 'insertLink', 'insertImage'],
+        toolbarButtonsXS: ['undo', 'redo' , '|', 'bold', 'italic', 'underline', '|', 'insertLink', 'insertImage'],
+        linkList: [
+            {
+                text: 'Games Workshop',
+                href: 'https://games-workshop.com',
+                target: '_blank'
+            },
+            {
+                text: 'HNIC Facebook',
+                href: "<%= I18n.t('social_links.facebook') %>"
+            }
+        ]
+    };
+
+    $(document).ready(function(){
+        $('textarea:not(.no-wysiwyg)').froalaEditor($.fraola_initializer);
+    });
+</script>
 </body>
 </html>
