@@ -11,10 +11,10 @@ class TicketsController < ApplicationController
 
   def add_to_cart
     ticket = System.find(params[:id])
-    cookies[:my_data] = {
-        :value => ticket.to_json,
-        :expires => 1.day.from_now
-    }
-    redirect_to tickets_path
+    tickets = JSON.parse(cookies[:tickets])
+    tickets = [] unless tickets.kind_of?(Array)
+    tickets << ticket.to_json
+    cookies[:tickets] = JSON.generate(tickets)
+    redirect_to cart_index_path
   end
 end
