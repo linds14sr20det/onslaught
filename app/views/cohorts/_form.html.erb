@@ -1,4 +1,4 @@
-<%= form_for(@cohort, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+<%= form_for(@cohort, html: { class: 'directUpload'}) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="well">
     <div class="form-group">
