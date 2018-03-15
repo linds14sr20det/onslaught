@@ -1,0 +1,9 @@
+<% provide(:title, @ticket.title) %>
+<% provide(:meta_description, truncate(strip_tags(@ticket.description), :length => 120)) %>
+<div class="ticket">
+  <div class="ticket-title"><%= @ticket.title %></div>
+  <small><p> <%= "Event size: #{@ticket.max_players}" %></p></small>
+  <span class="ticket-cost">$<%= number_with_precision(@ticket.cost, :precision => 2) %></span>
+  <%= sanitize(@ticket.description) %>
+  <%= button_to "Add to cart", add_to_cart_ticket_path, class: "btn btn-primary" %>
+</div>

@@ -12,7 +12,6 @@ class CohortsController < ApplicationController
   end
 
   def create
-    binding.pry
     @cohort = Cohort.new(cohort_params)
     @cohort.active = true if params[:activate_cohort]
     if @cohort.save
@@ -52,6 +51,6 @@ class CohortsController < ApplicationController
     end
 
     def set_s3_direct_post
-      # @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
 end

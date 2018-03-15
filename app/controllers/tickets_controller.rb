@@ -6,6 +6,15 @@ class TicketsController < ApplicationController
   end
 
   def show
+    @ticket = System.find(params[:id])
+  end
 
+  def add_to_cart
+    ticket = System.find(params[:id])
+    cookies[:my_data] = {
+        :value => ticket.to_json,
+        :expires => 1.day.from_now
+    }
+    redirect_to tickets_path
   end
 end
