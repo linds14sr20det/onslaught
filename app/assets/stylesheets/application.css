@@ -16,4 +16,6 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-datepicker3
+ *= require plugins/image.min.css
+ *= require font-awesome
  */

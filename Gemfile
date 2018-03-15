@@ -9,7 +9,7 @@ gem 'faker',                   '1.6.6'
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.21'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -31,17 +31,15 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'froala-editor-sdk'
+gem 'wysiwyg-rails'
 gem 'aws-sdk', '~> 2'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cocoon'
-gem 'wysiwyg-rails'
-gem 'font-awesome-rails'
 gem 'pdfkit'
 gem 'render_anywhere', require: false
-#TODO This needs to be set only on heroku prod
-gem 'wkhtmltopdf-heroku'
+gem 'font-awesome-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

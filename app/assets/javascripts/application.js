@@ -19,18 +19,7 @@
 //= require z.jquery.fileupload
 //= require cocoon
 //= require froala_editor.min.js
-
-$.fraola_creds = {
-    toolbarStickyOffset: 50,
-        key: 'PG-10dpj1xB3wwdqwI2J3B10B7B7A5F4igqknsfxyG5hcj1=='
-}
-
-$(document).ready(function(){
-    $('textarea:not(.no-wysiwyg)').froalaEditor($.fraola_creds);
-});
-
-$(document).on('cocoon:after-insert', function(e, insertedItem) {
-    insertedItem.find('textarea').froalaEditor($.fraola_creds);
-});
+//= require plugins/image.min.js
+//= require plugins/link.min.js
 
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
