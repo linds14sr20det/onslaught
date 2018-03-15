@@ -5,7 +5,7 @@ class CreateSystems < ActiveRecord::Migration[5.0]
       t.string :descriptive_date
       t.string :description
       t.integer :max_players
-      t.integer :cost
+      t.decimal :cost, :precision => 8, :scale => 2
 
       t.timestamps
     end

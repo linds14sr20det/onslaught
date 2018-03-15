@@ -12,6 +12,7 @@ class CohortsController < ApplicationController
   end
 
   def create
+    binding.pry
     @cohort = Cohort.new(cohort_params)
     @cohort.active = true if params[:activate_cohort]
     if @cohort.save
@@ -47,7 +48,7 @@ class CohortsController < ApplicationController
   private
 
     def cohort_params
-      params.require(:cohort).permit(:start_at, :end_at, :date_description, :active, systems_attributes: [:id, :title, :description, :date_description, :max_players, :_destroy, attachment_attributes: [:url]])
+      params.require(:cohort).permit(:start_at, :end_at, :descriptive_date, :active, systems_attributes: [:id, :title, :description, :descriptive_date, :max_players, :cost, :_destroy, attachment_attributes: [:url]])
     end
 
     def set_s3_direct_post

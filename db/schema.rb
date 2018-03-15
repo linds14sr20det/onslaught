@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180219192742) do
     t.string   "descriptive_date"
     t.string   "description"
     t.integer  "max_players"
-    t.integer  "cost"
+    t.decimal  "cost"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "cohort_id"
