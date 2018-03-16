@@ -41,7 +41,6 @@ gem 'render_anywhere', require: false
 gem 'font-awesome-rails'
 
 gem 'paypal-sdk-rest'
-gem 'js_cookie_rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
