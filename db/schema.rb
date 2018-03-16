@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180316050010) do
     t.datetime "updated_at",                       null: false
   end
 
-  create_table "registrants", id: :integer, default: -> { "nextval('registrant_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "registrants", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.boolean  "paid"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180316050010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "uuid"
-    t.index ["system_id"], name: "index_registrant_on_system_id", using: :btree
+    t.index ["system_id"], name: "index_registrants_on_system_id", using: :btree
   end
 
   create_table "systems", force: :cascade do |t|

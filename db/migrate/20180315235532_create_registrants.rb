@@ -1,4 +1,4 @@
-class Registrants < ActiveRecord::Migration[5.0]
+class CreateRegistrants < ActiveRecord::Migration[5.0]
   def change
     create_table :registrants do |t|
       t.string :name
