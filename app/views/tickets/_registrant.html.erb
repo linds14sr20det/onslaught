@@ -1,0 +1,13 @@
+<div class="col-md-12 ticket">
+  <div class="ticket-card">
+    <div class="ticket-card-content">
+      <%= link_to sanitize("#{fa_icon("trash")}"), remove_from_cart_tickets_path(:uuid => registrant.uuid) %>
+      <div class="ticket-title">
+        <%= registrant.system.title %>
+      </div>
+      <span class="ticket-cost">$<%= number_with_precision(registrant.system.cost, :precision => 2) %></span>
+      <span>Player: <%= registrant.name %></span>
+      <span>Player Email: <%= registrant.email %></span>
+    </div>
+  </div>
+</div>

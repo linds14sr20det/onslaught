@@ -10,11 +10,36 @@ class TicketsController < ApplicationController
   end
 
   def add_to_cart
-    ticket = System.find(params[:id])
-    tickets = JSON.parse(cookies[:tickets])
-    tickets = [] unless tickets.kind_of?(Array)
-    tickets << ticket.to_json
-    cookies[:tickets] = JSON.generate(tickets)
-    redirect_to cart_index_path
+    registrants = decode_cart
+    registrants << Registrant.new(:name => params["name"], :email => params["email"], :system_id => params["id"], :paid => false, :uuid => SecureRandom.uuid)
+    encode_cart(registrants)
+    redirect_to cart_tickets_path
+  end
+
+  def remove_from_cart
+    registrants = decode_cart
+    registrants.delete_if { |registrant| registrant.uuid == params[:uuid] }
+    encode_cart(registrants)
+    redirect_to cart_tickets_path
+  end
+
+  def cart
+    @registrants = decode_cart
+  end
+
+  private
+
+  def decode_cart
+    registrants = []
+    unless cookies[:registrants].nil?
+      JSON.parse(cookies[:registrants]).each do |registrant|
+        registrants << Registrant.new(JSON.parse(registrant))
+      end
+    end
+    registrants
+  end
+
+  def encode_cart(registrants)
+    cookies[:registrants] = JSON.generate(registrants.map!{|registrant| registrant.to_json})
   end
 end

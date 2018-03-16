@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   resources :cohorts
   resources :tickets, only: [:index, :show] do
     post :add_to_cart, on: :member
+    get :remove_from_cart, on: :collection
+    get :cart, on: :collection
   end
-  resources :cart, only: [:index] do
-    post :shut_up_and_give_me_your_money
-  end
+  post '/checkout' => 'paypal#checkout'
+  get '/execute' =>  'paypal#execute'
   resources :password_resets,     only: [:new, :create, :edit, :update]
 end
