@@ -56,8 +56,8 @@ class PaypalController < ApplicationController
   end
 
   def execute
-    payment = PayPal::SDK::REST::Payment.find(params[:paymentId])
-    if payment.execute(payer_id: params[:PayerID])
+    payment = PayPal::SDK::REST::Payment.find(params[:paymentID])
+    if payment.execute(payer_id: params[:payerID])
       render json: {msg: 'Payment Complete'}
     else
       render json: {msg: payment.error}

@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     get :cart, on: :collection
   end
   post '/checkout' => 'paypal#checkout'
-  get '/execute' =>  'paypal#execute'
+  post '/execute' =>  'paypal#execute'
   resources :password_resets,     only: [:new, :create, :edit, :update]
 end

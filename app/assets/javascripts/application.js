@@ -22,4 +22,12 @@
 //= require plugins/image.min.js
 //= require plugins/link.min.js
 
+$(document).ready(function(){
+    $('textarea:not(.no-wysiwyg)').froalaEditor($.fraola_creds);
+});
+
+$(document).on('cocoon:after-insert', function(e, insertedItem) {
+    insertedItem.find('textarea').froalaEditor($.fraola_creds);
+});
+
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
