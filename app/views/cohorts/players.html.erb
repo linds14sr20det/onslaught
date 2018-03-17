@@ -25,8 +25,17 @@
           <% end %>
         <% end %>
       </table>
-      <h4> Failed Payments</h4>
-      <table class="table table-striped">
+      <div class="row title-row">
+        <div class="col-md-9">
+          <h5>Failed Payments</h5>
+        </div>
+        <div style="margin-left:auto">
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#failed-payments-<%= system.id %>" aria-expanded="false" aria-controls="collapseExample">
+            Show
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped collapse" id="failed-payments-<%= system.id %>">
         <thead>
         <tr>
           <th>Player Name</th>
