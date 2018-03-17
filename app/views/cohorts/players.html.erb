@@ -1,0 +1,44 @@
+<div class="row title-row">
+  <div class="col-md-6 col-md-offset-3 text-center">
+    <h1>Players for <%= @cohort.descriptive_date %></h1>
+  </div>
+</div>
+
+<% unless @cohort.systems.nil? %>
+  <% @cohort.systems.each do |system| %>
+    <div class="well">
+      <div class="row">
+        <div class="col-md-12">
+          <h3><%= system.title %></h3>
+        </div>
+      </div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Player Name</th>
+          <th>Player Email</th>
+        </tr>
+        </thead>
+        <% unless system.registrants.paid.nil? %>
+          <% system.registrants.paid.each do |player|%>
+            <%= render partial: "player", locals: {player: player} %>
+          <% end %>
+        <% end %>
+      </table>
+      <h4> Failed Payments</h4>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Player Name</th>
+          <th>Player Email</th>
+        </tr>
+        </thead>
+        <% unless system.registrants.failed_payment.nil? %>
+          <% system.registrants.failed_payment.each do |player|%>
+            <%= render partial: "player", locals: {player: player} %>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+<% end %>

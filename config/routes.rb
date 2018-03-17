@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
-  resources :cohorts
+  resources :cohorts do
+    get :players, on: :member
+  end
   resources :tickets, only: [:index, :show] do
     post :add_to_cart, on: :member
     get :remove_from_cart, on: :collection

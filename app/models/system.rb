@@ -1,6 +1,7 @@
 class System < ApplicationRecord
   belongs_to :cohort, inverse_of: :systems
   has_one :attachment, inverse_of: :system
+  has_many :registrants
   accepts_nested_attributes_for :attachment, reject_if: :all_blank, allow_destroy: true
 
   def first_image
