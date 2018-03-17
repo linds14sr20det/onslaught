@@ -10,4 +10,8 @@ class System < ApplicationRecord
     image = html.css('img')[0].attr('src') unless html.css('img')[0].nil?
     image
   end
+
+  def full?
+    registrants.paid.count >= max_players
+  end
 end

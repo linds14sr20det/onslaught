@@ -9,6 +9,7 @@ class PaypalController < ApplicationController
     registrants = JSON.parse(params["registrants"])
     registrants.map!{|registrant| Registrant.new(registrant)}
     items = []
+    # TODO: Need to check for what items have sold out here
     registrants.each do |registrant|
       items << {
           :name => registrant.system.title,

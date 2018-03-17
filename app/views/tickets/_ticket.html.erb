@@ -5,6 +5,9 @@
       <div class="ticket-title">
         <%= link_to(ticket.title, ticket_path(ticket)) %>
       </div>
+      <% if ticket.full? %>
+      Sold Out
+      <% end %>
       <small><p> <%= "Event size: #{ticket.max_players}" %></p></small>
       <span class="ticket-cost">$<%= number_with_precision(ticket.cost, :precision => 2) %></span>
     </div>

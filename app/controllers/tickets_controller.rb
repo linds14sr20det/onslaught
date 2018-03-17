@@ -10,10 +10,15 @@ class TicketsController < ApplicationController
   end
 
   def add_to_cart
-    registrants = decode_cart
-    registrants << Registrant.new(:name => params["name"], :email => params["email"], :system_id => params["id"], :paid => false, :uuid => SecureRandom.uuid)
-    encode_cart(registrants)
-    redirect_to cart_tickets_path
+    if System.find(params["id"]).full?
+      flash[:warning] = "Unfortunately that system has sold out!"
+      redirect_to tickets_path
+    else
+      registrants = decode_cart
+      registrants << Registrant.new(:name => params["name"], :email => params["email"], :system_id => params["id"], :paid => false, :uuid => SecureRandom.uuid)
+      encode_cart(registrants)
+      redirect_to cart_tickets_path
+    end
   end
 
   def remove_from_cart
