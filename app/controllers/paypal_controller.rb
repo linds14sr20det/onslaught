@@ -49,6 +49,8 @@ class PaypalController < ApplicationController
 
     # Create Payment and return status
     if @payment.create
+      registrants.each{ |registrant| registrant.payment_id = @payment.id }
+      registrants.each(&:save)
       render json: {success: true, paymentID: @payment.id}
     else
       render json: {success: false}
@@ -58,7 +60,12 @@ class PaypalController < ApplicationController
   def execute
     payment = PayPal::SDK::REST::Payment.find(params[:paymentID])
     if payment.execute(payer_id: params[:payerID])
-      render json: {msg: 'Payment Complete'}
+      registrants = Registrant.where(:payment_id => params[:paymentID])
+      registrants.each{ |registrant| registrant.paid = true }
+      registrants.each(&:save)
+      cookies.delete(:registrants)
+      flash.now.success = 'Payment completed successfully.'
+      redirect_to cart_tickets_path
     else
       render json: {msg: payment.error}
     end
