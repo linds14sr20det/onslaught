@@ -64,8 +64,7 @@ class PaypalController < ApplicationController
       registrants.each{ |registrant| registrant.paid = true }
       registrants.each(&:save)
       cookies.delete(:registrants)
-      flash.now.success = 'Payment completed successfully.'
-      redirect_to cart_tickets_path
+      flash[:success] = "Payment successful."
     else
       render json: {msg: payment.error}
     end

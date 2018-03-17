@@ -11,7 +11,7 @@
 <script>
     paypal.Button.render({
 
-        env: "<%= Rails.env == 'production' ? Rails.env : 'sandbox' %>",
+        env: "<%= Rails.env == 'production' ? 'sandbox' : 'sandbox' %>", //TODO: remove the dual sandbox call here
 
         // Show the buyer a 'Pay Now' button in the checkout flow
         commit: true,
@@ -43,7 +43,10 @@
             };
 
             // Make a call to your server to execute the payment
-            return paypal.request.post(EXECUTE_URL, data);
+            return paypal.request.post(EXECUTE_URL, data)
+                .then(function (res) {
+                    window.location.replace("<%= cart_tickets_url %>");
+                });
         }
 
     }, '#paypal-button-container');
