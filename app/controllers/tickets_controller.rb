@@ -7,17 +7,23 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = System.find(params[:id])
+    @registrant = Registrant.new(:system_id => @ticket.id)
   end
 
   def add_to_cart
-    if System.find(params["id"]).full?
+    @ticket = System.find(params["id"])
+    @registrant = Registrant.new(:name => params[:registrant][:name], :email => params[:registrant][:email], :system_id => params["id"], :paid => false, :uuid => SecureRandom.uuid)
+    if @ticket.full?
       flash[:warning] = "Unfortunately that system has sold out!"
       redirect_to tickets_path
-    else
+    elsif @registrant.valid?
       registrants = decode_cart
-      registrants << Registrant.new(:name => params["name"], :email => params["email"], :system_id => params["id"], :paid => false, :uuid => SecureRandom.uuid)
+      registrants << @registrant
       encode_cart(registrants)
+      flash[:success] = "Ticket added to cart."
       redirect_to cart_tickets_path
+    else
+      render :show
     end
   end
 
