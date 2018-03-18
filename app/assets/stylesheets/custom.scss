@@ -176,6 +176,9 @@ span.picture {
 }
 
 .ticket {
+  a:hover {
+    text-decoration: none !important;
+  }
   .ticket-title {
     font-weight: 600;
     font-size: 30px;
@@ -204,6 +207,7 @@ span.picture {
     -moz-transition: all 250ms;
     transition: all 250ms;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
     .ticket-card-content{
       min-height: 100px;
       small {

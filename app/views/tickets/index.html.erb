@@ -1,14 +1,12 @@
 <% provide(:title, 'Tickets') %>
 <% provide(:meta_description, t('seo.tickets')) %>
 <% unless @tickets.nil? %>
-  <% @tickets.in_groups_of(3, false) do |three_tickets| %>
+  <!-- TODO: sort by day -->
+  <% @tickets.in_groups_of(3) do |ticket_group| %>
     <div class="row">
-      <% three_tickets.each do |ticket| %>
-        <%= render :partial => 'ticket', :locals => {:ticket => ticket} %>
+      <% ticket_group.each do |ticket| %>
+        <%= render :partial => 'ticket', :locals => {:ticket => ticket} unless ticket.nil? %>
       <% end %>
     </div>
   <% end %>
-  <div class="row">
-    <div class="col-lg-12"><%= will_paginate @tickets %></div>
-  </div>
 <% end %>

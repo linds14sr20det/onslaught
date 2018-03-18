@@ -51,7 +51,7 @@ class CohortsController < ApplicationController
   private
 
     def cohort_params
-      params.require(:cohort).permit(:start_at, :end_at, :descriptive_date, :active, systems_attributes: [:id, :title, :description, :descriptive_date, :max_players, :cost, :_destroy, attachment_attributes: [:url]])
+      params.require(:cohort).permit(:start_at, :end_at, :descriptive_date, :active, systems_attributes: [:id, :title, :description, :descriptive_date, :start_date, :max_players, :cost, :attachment_url, :_destroy])
     end
 
     def set_s3_direct_post
