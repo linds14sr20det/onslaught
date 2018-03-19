@@ -1,5 +1,5 @@
 <div class="col-md-12 ticket">
-    <div class="ticket-card <%= "sold-out" if registrant.system.full? %>">
+    <div class="registrant-card <%= "sold-out" if registrant.system.full? %>">
       <div class="ticket-card-content">
         <div class="ticket-date">
           <%= registrant.system.descriptive_date %>
@@ -9,8 +9,11 @@
           <%= link_to sanitize("Remove #{fa_icon("trash")}"), remove_from_cart_tickets_path(:uuid => registrant.uuid), :class => "pull-right remove" %>
         </div>
         <small><p><%= "Event size: #{registrant.system.max_players}" %></p></small>
-        <span>Player: <%= registrant.name %></span>
-        <span>Player Email: <%= registrant.email %></span>
+        <div class="player-info">
+          <span><b>Player:</b> <%= registrant.name %></span>
+          <br>
+          <span><b>Email:</b> <%= registrant.email %></span>
+        </div>
       </div>
       <div class="price price-card pull-right">$<%= number_with_precision(registrant.system.cost, :precision => 0) %></div>
     </div>

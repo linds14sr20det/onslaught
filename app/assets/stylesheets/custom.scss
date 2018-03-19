@@ -286,6 +286,27 @@ span.picture {
       margin-bottom: 5px;
     }
   }
+  .registrant-card {
+    border: 1px solid #e2e2e2;
+    padding: 12px;
+    margin-bottom: 24px;
+    background: #f4f4f4;
+    -webkit-transition: all 250ms;
+    -moz-transition: all 250ms;
+    transition: all 250ms;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.30), 0 10px 10px rgba(0,0,0,0.22);
+    min-height: 150px;
+    .ticket-card-content{
+      min-height: 100px;
+      small {
+        color: #b5b5b5;
+      }
+      .player-info{
+        overflow-wrap: break-word;
+        margin-right: 100px;
+      }
+    }
+  }
 }
 
 div.datepicker{
