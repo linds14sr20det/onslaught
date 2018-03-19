@@ -1,17 +1,17 @@
 <div class="col-md-4 ticket">
   <%= link_to(ticket_path(ticket)) do %>
-    <div class="ticket-card">
+    <div class="ticket-card <%= "sold-out" if ticket.full? %>">
       <img class="ticket-thumb-index" src="<%= ticket.first_image %>">
       <div class="ticket-card-content">
+        <div class="ticket-date">
+          <%= ticket.descriptive_date %>
+        </div>
         <div class="ticket-title">
           <%= ticket.title %>
         </div>
-        <% if ticket.full? %>
-          Sold Out
-        <% end %>
-        <small><p> <%= "Event size: #{ticket.max_players}" %></p></small>
-        <span class="ticket-cost">$<%= number_with_precision(ticket.cost, :precision => 2) %></span>
+        <small><p><%= "Event size: #{ticket.max_players}" %></p></small>
       </div>
+      <div class="price">$<%= number_with_precision(ticket.cost, :precision => 0) %></div>
     </div>
   <% end %>
 </div>

@@ -2,11 +2,27 @@
 @import "bootstrap";
 
 $gray-medium-light: #eaeaea;
+$tag-color: #008CBA;
+$tag-shadow: #272f75;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
+}
+
+@mixin cart_badge {
+  position: absolute;
+  background: rgb(255, 0, 0);
+  height: 15px;
+  width: 15px;
+  top: 7px;
+  text-align: center;
+  line-height: 12px;
+  font-size: 1rem;
+  border-radius: 50%;
+  color:white;
+  border:1px solid red;
 }
 
 html {
@@ -35,6 +51,13 @@ form {
   -webkit-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.65);
   -moz-box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.65);
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.65);
+
+  .cart-badge-1:after{@include cart_badge; content:"1";}
+  .cart-badge-2:after{@include cart_badge; content:"2";}
+  .cart-badge-3:after{@include cart_badge; content:"3";}
+  .cart-badge-4:after{@include cart_badge; content:"4";}
+  .cart-badge-5:after{@include cart_badge; content:"5";}
+  .cart-badge-max:after{@include cart_badge; content:"5+";}
 }
 .navbar-toggle {
   display: block;
@@ -176,12 +199,39 @@ span.picture {
 }
 
 .ticket {
+  .sold-out:after {
+    right: 0;
+    left: 0;
+    background: rgba(238, 68, 51, 0.73);
+    position: absolute;
+    top: 50px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    content: "Sold Out";
+  }
+  .price {
+    position: relative;
+    font-weight: 600;
+    font-size: 28px;
+    text-shadow: 3px 3px 5px #959595;
+    color: #337ab7;
+    bottom: 20px;
+    float: right;
+  }
   a:hover {
     text-decoration: none !important;
   }
+  .ticket-date {
+    font-weight: 600;
+  }
   .ticket-title {
     font-weight: 600;
-    font-size: 30px;
+    font-size: 24px;
+    color: #5e5e5e;
     top: 50%;
     margin-bottom: 10px;
     line-height: 26px;
@@ -206,17 +256,14 @@ span.picture {
     -webkit-transition: all 250ms;
     -moz-transition: all 250ms;
     transition: all 250ms;
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: 0 10px 10px rgba(0,0,0,0.30), 0 10px 10px rgba(0,0,0,0.22);
+    max-height: 150px;
+    min-height: 150px;
 
     .ticket-card-content{
       min-height: 100px;
       small {
         color: #b5b5b5;
-      }
-      .ticket-cost {
-        color: orangered;
-        font-weight: 600;
-        font-size: 20px;
       }
     }
     .ticket-thumb-index {

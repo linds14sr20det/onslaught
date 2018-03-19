@@ -17,9 +17,9 @@ class TicketsController < ApplicationController
       flash[:warning] = "Unfortunately that system has sold out!"
       redirect_to tickets_path
     elsif @registrant.valid?
-      registrants = decode_cart
+      registrants = Cart.decode_cart(cookies)
       registrants << @registrant
-      encode_cart(registrants)
+      cookies[:registrants] = Cart.encode_cart(registrants)
       flash[:success] = "Ticket added to cart."
       redirect_to cart_tickets_path
     else
@@ -28,29 +28,14 @@ class TicketsController < ApplicationController
   end
 
   def remove_from_cart
-    registrants = decode_cart
+    registrants = Cart.decode_cart(cookies)
     registrants.delete_if { |registrant| registrant.uuid == params[:uuid] }
-    encode_cart(registrants)
+    cookies[:registrants] = Cart.encode_cart(registrants)
     redirect_to cart_tickets_path
   end
 
   def cart
-    @registrants = decode_cart
+    @registrants = Cart.decode_cart(cookies)
   end
 
-  private
-
-  def decode_cart
-    registrants = []
-    unless cookies[:registrants].nil?
-      JSON.parse(cookies[:registrants]).each do |registrant|
-        registrants << Registrant.new(JSON.parse(registrant))
-      end
-    end
-    registrants
-  end
-
-  def encode_cart(registrants)
-    cookies[:registrants] = JSON.generate(registrants.map!{|registrant| registrant.to_json})
-  end
 end
