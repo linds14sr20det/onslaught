@@ -85,7 +85,7 @@ form {
   letter-spacing: -1px;
   font-weight: bold;
   line-height: 50px;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .round-image {
@@ -283,4 +283,16 @@ span.picture {
 
 div.datepicker{
   z-index: 1030 !important;
+}
+
+#paypal-button-container {
+  height: 70px;
+}
+
+.cont-shopping {
+  width: 80%;
+  margin-top: 40px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
 }

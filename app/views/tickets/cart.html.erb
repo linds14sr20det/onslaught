@@ -1,15 +1,43 @@
 <% provide(:title, 'Shopping Cart') %>
 <% provide(:meta_description, t('seo.cart')) %>
-<% unless @registrants.nil? %>
-  <% @registrants.each do |registrant| %>
-    <%= render :partial => 'registrant', :locals => {:registrant => registrant} %>
+<div class="ticket">
+  <% unless @registrants.nil? %>
+    <% @registrants.each do |registrant| %>
+      <div class="row">
+        <%= render :partial => 'registrant', :locals => {:registrant => registrant} %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 
-<div id="paypal-button-container"></div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <span class="price">Total: $<%= number_with_precision(@registrants.map { |registrant| registrant.system.cost }.sum, :precision => 2) %></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="paypal-button-container"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-group-vertical cont-shopping">
+        <%= link_to "Continue shopping", tickets_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
     paypal.Button.render({
+
+        style: {
+            size: 'responsive',
+            color: 'blue',
+            shape: 'pill',
+            label: 'checkout'
+        },
 
         env: "<%= Rails.env == 'production' ? 'sandbox' : 'sandbox' %>", //TODO: remove the dual sandbox call here
 
