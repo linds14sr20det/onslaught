@@ -8,14 +8,13 @@
 <p>
   You registered for the following systems:
 </p>
-<li>
+<ul>
 <% @registrant_group.each do |registrant| %>
-  <ul><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}"  %></ul>
+  <li><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}"  %></li>
 <% end %>
-</li>
+</ul>
 <p>For further information please go here:</p>
 <%= link_to(info_url, info_url) %>
 <p><b>Receipt:</b> you should receive a receipt email directly from paypal. If you do not, please reply to this email.</p>
-
 </body>
 </html>
