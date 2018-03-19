@@ -219,8 +219,12 @@ span.picture {
     font-size: 28px;
     text-shadow: 3px 3px 5px #959595;
     color: #337ab7;
+    bottom: 3px;
+    text-align: center;
+  }
+  .price-card {
+    font-size: 28px;
     bottom: 20px;
-    float: right;
   }
   a:hover {
     text-decoration: none !important;
