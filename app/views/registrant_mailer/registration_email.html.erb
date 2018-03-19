@@ -4,9 +4,18 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Welcome to example.com, <%= @registrant.name %></h1>
+<h1>Thanks for registering for Onslaught, <%= @registrant_group[0].name %>!</h1>
 <p>
+  You registered for the following systems:
 </p>
-<p>Thanks for joining and have a great day!</p>
+<li>
+<% @registrant_group.each do |registrant| %>
+  <ul><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}"  %></ul>
+<% end %>
+</li>
+<p>For further information please go here:</p>
+<%= link_to(info_url, info_url) %>
+<p><b>Receipt:</b> you should receive a receipt email directly from paypal. If you do not, please reply to this email.</p>
+
 </body>
 </html>

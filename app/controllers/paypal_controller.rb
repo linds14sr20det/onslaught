@@ -22,8 +22,6 @@ class PaypalController < ApplicationController
 
     total = items.map { |item| item[:price] }.sum
 
-    RegistrantMailer.registration_email(registrants[0]).deliver_now
-
     @payment = Payment.new({
     :intent =>  "sale",
     # ###Payer
@@ -67,7 +65,10 @@ class PaypalController < ApplicationController
       registrants.each{ |registrant| registrant.paid = true }
       registrants.each(&:save)
       cookies.delete(:registrants)
-      registrants
+      registrant_groups = registrants.group_by{ |registrant| registrant.email }.values
+      registrant_groups.each do |registrant_group|
+        RegistrantMailer.registration_email(registrant_group, payment).deliver_now
+      end
       flash[:success] = "Payment successful."
     else
       render json: {msg: payment.error}

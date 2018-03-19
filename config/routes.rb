@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   post '/checkout' => 'paypal#checkout'
   post '/execute' =>  'paypal#execute'
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  get '/info' => 'show#info'
 end

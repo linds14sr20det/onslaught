@@ -1,9 +1,16 @@
 class RegistrantMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  require 'open-uri'
 
-  def registration_email(registrant)
-    @registrant = registrant
-    @url  = 'http://example.com/login'
-    mail(to: @registrant.email, subject: 'Welcome to My Awesome Site')
+  default from: 'edmontononslaught@gmail.com'
+
+  def registration_email(registrant_group, payment)
+    @registrant_group = registrant_group
+    @payment = payment
+    registrant_group.each do |registrant|
+      attachment_url = "http:#{URI.encode(registrant.system.attachment_url)}"
+      attachments[URI(attachment_url).path.split('/').last] = open(attachment_url).read unless registrant.system.attachment_url.blank?
+    end
+
+    mail(to: @registrant_group[0].email, subject: 'Thanks for registering for Onslaught!')
   end
 end
