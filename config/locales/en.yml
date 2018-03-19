@@ -33,3 +33,4 @@ en:
       tickets: "Shop for your tickets here."
       info: "Information about the event here."
       cart: "Checkout with your tickets"
+      success: "Transaction success"

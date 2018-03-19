@@ -1,0 +1,35 @@
+<% provide(:title, 'Successful Transaction') %>
+<% provide(:meta_description, t('seo.success')) %>
+<div class="row">
+  <div class="col-md-12">
+    <h3>You're registered!</h3>
+    <p>Please check your email inbox for receipt of payment. You'll find a copy of the player pack attached to the email as well.
+    If you loose your player pack, you can always come back here and download it from the event's ticket page.</p>
+
+    <p>If you registered multiple players with different email addresses, each email address will receive a proof of purchase
+    email with the players pack attached.</p>
+
+    <p>If you have any other questions, go to our <%= link_to "info", "#" %> page for our contact details!</p>
+  </div>
+</div>
+
+<div class="sg-spacer"></div>
+<%= link_to "#", class: "banner-link" do %>
+  <div class="sg-home info"><p>info</p></div>
+<% end %>
+
+<script>
+    $(document).ready(function() {
+        setHeight();
+    });
+
+    $( window ).on( "orientationchange", function( event ) {
+        setHeight();
+    });
+
+    function setHeight () {
+        setTimeout(function () {
+            $('.container').css({height: window.innerHeight - 50});
+        }, 250);
+    }
+</script>

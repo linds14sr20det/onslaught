@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$main-font: #5e5e5e;
 $gray-medium-light: #eaeaea;
 $tag-color: #008CBA;
 $tag-shadow: #272f75;
@@ -78,6 +79,10 @@ form {
   display: block !important;
 }
 
+.cart-icon {
+  margin-right: 20px;
+}
+
 .logo-text {
   font-size: 1.7em;
   color: #fff;
@@ -85,7 +90,7 @@ form {
   letter-spacing: -1px;
   font-weight: bold;
   line-height: 50px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .round-image {
@@ -223,8 +228,10 @@ span.picture {
     text-align: center;
   }
   .price-card {
+    position: absolute;
     font-size: 28px;
-    bottom: 20px;
+    bottom: 5px;
+    right: 28px;
   }
   a:hover {
     text-decoration: none !important;
@@ -295,4 +302,10 @@ div.datepicker{
   display:block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.remove {
+  font-size: 12px;
+  color: $main-font
+
 }
