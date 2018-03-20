@@ -1,6 +1,6 @@
 <div class="col-md-4 ticket">
-  <%= link_to(ticket_path(ticket)) do %>
-    <div class="ticket-card <%= "sold-out" if ticket.full? %>">
+  <%= link_to_if ticket.cohort.registration_open?, ticket_path(ticket) do %>
+    <div class="ticket-card <%= "sold-out" if ticket.full? %> <%= "coming-soon" if ticket.cohort.active_but_registration_closed? %>">
       <img class="ticket-thumb-index" src="<%= ticket.first_image %>">
       <div class="ticket-card-content">
         <div class="ticket-date">

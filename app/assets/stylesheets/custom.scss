@@ -26,6 +26,19 @@ $tag-shadow: #272f75;
   border:1px solid red;
 }
 
+@mixin card_overlay {
+  right: 0;
+  left: 0;
+  position: absolute;
+  top: 50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(5deg);
+  -webkit-transform: rotate(5deg);
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -205,18 +218,14 @@ span.picture {
 
 .ticket {
   .sold-out:after {
-    right: 0;
-    left: 0;
+    @include card_overlay;
     background: rgba(238, 68, 51, 0.73);
-    position: absolute;
-    top: 50px;
-    text-align: center;
-    line-height: 50px;
-    letter-spacing: 1px;
-    color: #f0f0f0;
-    transform: rotate(5deg);
-    -webkit-transform: rotate(5deg);
     content: "Sold Out";
+  }
+  .coming-soon:after {
+    @include card_overlay;
+    background: rgba(100, 100, 100, 0.73);
+    content: "Coming Soon";
   }
   .price {
     position: relative;

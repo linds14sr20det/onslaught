@@ -1,7 +1,9 @@
 <% provide(:title, 'Welcome') %>
 <% provide(:meta_description, t('seo.home')) %>
-<%= link_to tickets_path, class: "banner-link" do %>
-  <div class="sg-home tickets"><p>tickets</p></div>
+<% unless Cohort.where(:active => true).blank? %>
+  <%= link_to tickets_path, class: "banner-link" do %>
+    <div class="sg-home tickets"><p>tickets</p></div>
+  <% end %>
 <% end %>
 <div class="sg-spacer"></div>
 <%= link_to info_path, class: "banner-link" do %>

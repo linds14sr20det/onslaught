@@ -12,6 +12,9 @@ class TicketsController < ApplicationController
 
   def add_to_cart
     @ticket = System.find(params["id"])
+    unless @ticket.cohort.active? && @ticket.cohort.registration_open?
+      redirect_to tickets_path and return
+    end
     @registrant = Registrant.new(:name => params[:registrant][:name], :email => params[:registrant][:email], :system_id => params["id"], :paid => false, :uuid => SecureRandom.uuid)
     if @ticket.full?
       flash[:warning] = "Unfortunately that system has sold out!"
@@ -37,5 +40,4 @@ class TicketsController < ApplicationController
   def cart
     @registrants = Cart.decode_cart(cookies)
   end
-
 end
