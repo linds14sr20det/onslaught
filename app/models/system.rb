@@ -3,6 +3,9 @@ class System < ApplicationRecord
   has_one :attachment, inverse_of: :system
   has_many :registrants
   accepts_nested_attributes_for :attachment, reject_if: :all_blank, allow_destroy: true
+  before_destroy :check_for_registrants
+
+
 
   def first_image
     html = Nokogiri::HTML.fragment(description)
@@ -13,5 +16,14 @@ class System < ApplicationRecord
 
   def full?
     registrants.paid.count >= max_players
+  end
+
+  private
+
+  def check_for_registrants
+    if registrants.count > 0
+      errors.add(:active, 'cannot have another active cohort. Deactivate the active cohort.')
+      false
+    end
   end
 end

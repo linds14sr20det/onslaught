@@ -34,7 +34,7 @@ class CohortsController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to cohorts_path
     else
-      render 'edit'
+      redirect_to edit_cohorts_path(@cohort)
     end
   end
 

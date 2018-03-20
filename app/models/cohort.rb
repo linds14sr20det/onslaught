@@ -23,7 +23,7 @@ class Cohort < ApplicationRecord
       matches = matches.where('id != ?', id)
     end
     if matches.exists?
-      errors.add(:active, 'cannot have another active cohort. Deactivate the active cohort.')
+      matches.update_all(:active => false)
     end
   end
 end

@@ -41,5 +41,5 @@
   <%= f.hidden_field :attachment_url, class: 'url-holder' %>
   </div>
 
-  <%= link_to_remove_association('Remove this', f, class: 'btn btn-primary') %>
+  <%= link_to_remove_association('Remove this', f, class: 'btn btn-primary', data: { confirm: "Are you sure? This may remove all registrants." }) %>
 </div>
