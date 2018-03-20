@@ -59,7 +59,12 @@
             // Make a call to your server to set up the payment
             return paypal.request.post(CREATE_URL, {registrants:JSON.stringify(registrants)})
                 .then(function(res) {
-                    return res.paymentID;
+                    if (res.success) {
+                        return res.paymentID;
+                    } else {
+                        window.location.replace("<%= cart_tickets_url %>");
+                    }
+
                 });
         },
 

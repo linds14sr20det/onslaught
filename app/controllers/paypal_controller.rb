@@ -8,8 +8,15 @@ class PaypalController < ApplicationController
   def checkout
     registrants = JSON.parse(params["registrants"])
     registrants.map!{|registrant| Registrant.new(registrant)}
+    systems_with_space = registrants.reject{|registrant| registrant.system.full? }
+    invalid_registration = (systems_with_space-registrants) | (registrants-systems_with_space)
+    unless invalid_registration.empty?
+      invalid_systems = invalid_registration.map(&:system)
+      flash[:warning] = "Unfortunately #{invalid_systems.map(&:title).to_sentence} has sold out! It has been removed from your cart."
+      cookies[:registrants] = Cart.encode_cart(systems_with_space)
+      render json: {success: false} and return
+    end
     items = []
-    # TODO: Need to check for what items have sold out here
     registrants.each do |registrant|
       items << {
           :name => registrant.system.title,
