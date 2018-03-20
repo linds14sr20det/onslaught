@@ -5,12 +5,10 @@
 </head>
 <body>
 <h1>Thanks for registering for Onslaught, <%= @registrant_group[0].name %>!</h1>
-<p>
-  You registered for the following systems:
-</p>
+<p>You registered for the following systems:</p>
 <ul>
 <% @registrant_group.each do |registrant| %>
-  <li><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}"  %></li>
+  <li><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}" %></li>
 <% end %>
 </ul>
 <p>For further information please go here:</p>

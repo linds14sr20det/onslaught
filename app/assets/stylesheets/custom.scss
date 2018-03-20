@@ -79,10 +79,6 @@ form {
   display: block !important;
 }
 
-.cart-icon {
-  margin-right: 20px;
-}
-
 .logo-text {
   font-size: 1.7em;
   color: #fff;
@@ -91,6 +87,10 @@ form {
   font-weight: bold;
   line-height: 50px;
   margin-right: 10px;
+}
+
+.cart-icon {
+  margin-right: 20px;
 }
 
 .round-image {
@@ -231,7 +231,7 @@ span.picture {
     position: absolute;
     font-size: 28px;
     bottom: 5px;
-    right: 28px;
+    right: 12px;
   }
   a:hover {
     text-decoration: none !important;
@@ -259,7 +259,8 @@ span.picture {
     margin-bottom: 20px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 5px 4px rgba(0,0,0,0.22);
   }
-  .ticket-card{
+  .ticket-card {
+    position: relative;
     border: 1px solid #e2e2e2;
     padding: 12px;
     margin-bottom: 24px;
@@ -287,6 +288,7 @@ span.picture {
     }
   }
   .registrant-card {
+    position: relative;
     border: 1px solid #e2e2e2;
     padding: 12px;
     margin-bottom: 24px;

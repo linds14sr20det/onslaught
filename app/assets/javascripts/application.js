@@ -23,11 +23,11 @@
 //= require plugins/link.min.js
 
 $(document).ready(function(){
-    $('textarea:not(.no-wysiwyg)').froalaEditor($.fraola_creds);
+    $('textarea:not(.no-wysiwyg)').froalaEditor($.froala_creds);
 });
 
 $(document).on('cocoon:after-insert', function(e, insertedItem) {
-    insertedItem.find('textarea').froalaEditor($.fraola_creds);
+    insertedItem.find('textarea').froalaEditor($.froala_creds);
 });
 
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
