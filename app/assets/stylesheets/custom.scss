@@ -214,8 +214,8 @@ span.picture {
     line-height: 50px;
     letter-spacing: 1px;
     color: #f0f0f0;
-    transform: rotate(-5deg);
-    -webkit-transform: rotate(-5deg);
+    transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
     content: "Sold Out";
   }
   .price {
@@ -329,6 +329,6 @@ div.datepicker{
 
 .remove {
   font-size: 12px;
-  color: $main-font
-
+  color: $main-font;
+  z-index: 2;
 }
