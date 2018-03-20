@@ -41,5 +41,6 @@
   <%= f.hidden_field :attachment_url, class: 'url-holder' %>
   </div>
 
-  <%= link_to_remove_association('Remove this', f, class: 'btn btn-primary', data: { confirm: "Are you sure? This may remove all registrants." }) %>
+  <%= link_to_remove_association('Remove system', f, class: "btn btn-primary #{"disabled" unless f.object.registrants.empty?}") %>
+  <%= "There are players linked to this system, delete them first."  unless f.object.registrants.empty? %>
 </div>

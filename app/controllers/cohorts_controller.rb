@@ -39,8 +39,11 @@ class CohortsController < ApplicationController
   end
 
   def destroy
-    Cohort.find(params[:id]).destroy
-    flash[:success] = "Cohort deleted"
+    if Cohort.find(params[:id]).destroy
+      flash[:success] = "Cohort deleted"
+    else
+      flash[:warning] = "Cohort has systems with players. The cohort was not deleted."
+    end
     redirect_to cohorts_path
   end
 
