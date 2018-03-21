@@ -44,7 +44,7 @@
             label: 'checkout'
         },
 
-        env: "<%= Rails.env == 'production' ? 'sandbox' : 'sandbox' %>", //TODO: remove the dual sandbox call here
+        env: "<%= Rails.env == 'production' ? Rails.env : 'sandbox' %>",
 
         // Show the buyer a 'Pay Now' button in the checkout flow
         commit: true,

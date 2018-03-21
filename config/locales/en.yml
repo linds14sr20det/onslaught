@@ -24,10 +24,6 @@ en:
     cta_submit_application: "Register Now!"
     cta_manage_cohort: "Manage Cohorts"
     main_text: "Welcome to Onslaught!"
-  submission:
-    team_member:
-      titles:
-        other: "Other (Please Specify)"
   seo:
     home: "Welcome to Edmonton Onslaught! This is the home of Edmonton's premiere table top wargaming tournament."
     tickets: "Shop for your tickets here."
@@ -35,7 +31,6 @@ en:
     cart: "Checkout with your tickets"
     success: "Transaction success"
   social_links:
-    twitter: ""
-    facebook: ""
-    instagram: ""
+    facebook: "https://facebook.com/Edmontononslaught/"
+    instagram: "https://www.instagram.com/hobbynightincanada/"
     hnic: "http://www.hobbynight.ca"

@@ -1,1 +1,14 @@
-<%= sanitize(@info.body) %>
+<% provide(:title, "Event Information") %>
+<% provide(:meta_description, "Onslaught event information.") %>
+
+<div class="row">
+  <div class="col-md-12">
+      <h1>Event Info</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= sanitize(@info.body) %>
+  </div>
+</div>
+
