@@ -29,18 +29,6 @@
     <%= f.number_field :cost, value: number_with_precision(f.object.cost, :precision => 2), step: "0.01", class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-  <%= f.label :attachment_uploader, "Players pack" %>
-  <% unless f.object.attachment_url.blank? %>
-    <br>
-    <a href="<%=f.object.attachment_url %>" download>View Current Attached Players Pack</a>
-    <br>
-    -- OR --
-  <% end %>
-  <%= f.file_field :attachment_uploader, class: 'form-control' %>
-  <%= f.hidden_field :attachment_url, class: 'url-holder' %>
-  </div>
-
   <%= link_to_remove_association('Remove system', f, class: "btn btn-primary #{"disabled" unless f.object.registrants.empty?}") %>
   <%= "There are players linked to this system, delete them first."  unless f.object.registrants.empty? %>
 </div>

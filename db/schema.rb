@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320144108) do
+ActiveRecord::Schema.define(version: 20180321050913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(version: 20180320144108) do
     t.boolean  "active",           default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "attachment_url"
   end
 
-  create_table "info", force: :cascade do |t|
+  create_table "infos", id: :integer, default: -> { "nextval('info_id_seq'::regclass)" }, force: :cascade do |t|
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(version: 20180320144108) do
     t.datetime "updated_at",       null: false
     t.integer  "cohort_id"
     t.datetime "start_date"
-    t.string   "attachment_url"
     t.index ["cohort_id"], name: "index_systems_on_cohort_id", using: :btree
   end
 

@@ -7,6 +7,18 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :attachment_uploader, "Players pack" %>
+      <% unless f.object.attachment_url.blank? %>
+        <br>
+        <a href="<%=f.object.attachment_url %>" download>View Current Attached Players Pack</a>
+        <br>
+        -- OR --
+      <% end %>
+      <%= f.file_field :attachment_uploader, class: 'form-control' %>
+      <%= f.hidden_field :attachment_url, class: 'url-holder' %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :start_at, "Registration opens" %>
       <%= f.text_field :start_at, data:{ provide:'datepicker' }, class: 'form-control' %>
     </div>
@@ -45,11 +57,6 @@
 <script>
     $(function () {
         initializeUploader($('.directUpload'));
-
-        $('#systems').on('cocoon:after-insert', function(e, insertedItem) {
-            debugger
-            initializeUploader(insertedItem);
-        });
     });
 
     function initializeUploader(item) {
