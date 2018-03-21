@@ -4,20 +4,22 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<div class="row">
-  <div class="col-md-12">
-    <%= image_tag("email_banner") %>
+<div style="max-width: 700px; margin: 0 auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; background-color:#f4f4f4; box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3), 0 10px 10px rgba(0, 0, 0, 0.22);">
+  <div style="">
+    <%= image_tag("email_banner", style: "max-width:100%") %>
   </div>
+  <div style="padding: 20px">
+    <h1 style="font-size: 24px; font-weight: 500">Thanks for registering for Onslaught, <%= @registrant_group[0].name %>!</h1>
+    <p>You registered for the following systems:</p>
+    <ul>
+    <% @registrant_group.each do |registrant| %>
+      <li><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}" %></li>
+    <% end %>
+    </ul>
+    <p>For further information please go here:</p>
+    <%= link_to(info_url(:id=>1), info_url(:id=>1)) %>
+    <p><b>Receipt:</b> you should receive a receipt email directly from paypal. If you do not, please reply to this email.</p>
+    </div>
 </div>
-<h1>Thanks for registering for Onslaught, <%= @registrant_group[0].name %>!</h1>
-<p>You registered for the following systems:</p>
-<ul>
-<% @registrant_group.each do |registrant| %>
-  <li><%= "#{registrant.system.title} - #{registrant.system.descriptive_date}" %></li>
-<% end %>
-</ul>
-<p>For further information please go here:</p>
-<%= link_to(info_url(:id=>1), info_url(:id=>1)) %>
-<p><b>Receipt:</b> you should receive a receipt email directly from paypal. If you do not, please reply to this email.</p>
 </body>
 </html>

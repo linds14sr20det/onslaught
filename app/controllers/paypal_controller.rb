@@ -74,7 +74,7 @@ class PaypalController < ApplicationController
       cookies.delete(:registrants)
       registrant_groups = registrants.group_by{ |registrant| registrant.email }.values
       registrant_groups.each do |registrant_group|
-        RegistrantMailer.registration_email(registrant_group, payment).deliver_now
+        RegistrantMailer.registration_email(registrant_group).deliver_now
       end
       flash[:success] = "Payment successful."
     else
