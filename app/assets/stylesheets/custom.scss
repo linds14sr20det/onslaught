@@ -190,7 +190,7 @@ span.picture {
       background-size: cover;
       background-position: 50% 50%;
       .banner-date {
-        font-weight: 100;
+        font-weight: 200;
         font-size: 20px;
         padding-bottom: 5px;
       }
@@ -236,6 +236,9 @@ span.picture {
 
 .form-pad-bottom {
   padding-bottom: 20px;
+}
+.button-pad-bottom {
+  padding-bottom: 10px;
 }
 
 .ticket {
