@@ -7,9 +7,12 @@
 <% unless @cohort.systems.nil? %>
   <% @cohort.systems.each do |system| %>
     <div class="well">
-      <div class="row">
+      <div class="row title-row">
         <div class="col-md-12">
           <h3><%= system.title %></h3>
+        </div>
+        <div style="margin-left:auto">
+          <%= link_to "Add Player", new_registrant_path(system_id: system.id), class: "btn btn-primary"%>
         </div>
       </div>
       <table class="table table-striped">
@@ -17,11 +20,12 @@
         <tr>
           <th>Player Name</th>
           <th>Player Email</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <% unless system.registrants.paid.nil? %>
-          <% system.registrants.paid.each do |player|%>
-            <%= render partial: "player", locals: {player: player} %>
+          <% system.registrants.paid.each do |registrant|%>
+            <%= render partial: "registrant", locals: {registrant: registrant} %>
           <% end %>
         <% end %>
       </table>
@@ -40,11 +44,12 @@
         <tr>
           <th>Player Name</th>
           <th>Player Email</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <% unless system.registrants.failed_payment.nil? %>
-          <% system.registrants.failed_payment.each do |player|%>
-            <%= render partial: "player", locals: {player: player} %>
+          <% system.registrants.failed_payment.each do |registrant|%>
+            <%= render partial: "registrant", locals: {registrant: registrant} %>
           <% end %>
         <% end %>
       </table>

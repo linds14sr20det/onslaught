@@ -47,10 +47,6 @@ class CohortsController < ApplicationController
     redirect_to cohorts_path
   end
 
-  def players
-    @cohort = Cohort.find(params[:id])
-  end
-
   private
 
     def cohort_params
