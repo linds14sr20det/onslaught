@@ -29,8 +29,13 @@ en:
       titles:
         other: "Other (Please Specify)"
   seo:
-      home: "Welcome to Edmonton Onslaught! This is the home of Edmonton's premiere table top wargaming tournament."
-      tickets: "Shop for your tickets here."
-      info: "Information about the event here."
-      cart: "Checkout with your tickets"
-      success: "Transaction success"
+    home: "Welcome to Edmonton Onslaught! This is the home of Edmonton's premiere table top wargaming tournament."
+    tickets: "Shop for your tickets here."
+    info: "Information about the event here."
+    cart: "Checkout with your tickets"
+    success: "Transaction success"
+  social_links:
+    twitter: ""
+    facebook: ""
+    instagram: ""
+    hnic: "http://www.hobbynight.ca"

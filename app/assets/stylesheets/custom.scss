@@ -131,6 +131,10 @@ form {
     .social-link {
       padding-left: 8%;
       padding-right: 8%;
+      .hnic-icon {
+        width: 20px;
+        height: 20px;
+      }
       i {
         color: white;
       }
@@ -152,42 +156,59 @@ span.picture {
   }
 }
 
-.banner-link {
-  text-decoration: none;
+.color {
+  background-color: #ccc;
 }
 
-.sg-spacer {
+.banner-spacer {
   height: 5%;
 }
-.sg-home {
-  max-height: 300px;
-  max-width: 1028px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  resize: vertical;
-  margin: 0 auto;
-  padding: 0;
-  &.tickets {
-    height: 55%;
-    background: image-url("Banner1.png");
-    background-size: cover;
-    background-position: 50% 50%;
-  }
-  &.info {
-    height: 40%;
-    background: image-url("necro.jpg");
-    background-size: cover;
-    background-position: 50% 50%;
-  }
-  p {
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 40px;
-    color: white;
-    top: 50%;
-    margin-bottom: 0;
+
+.banner {
+  text-decoration: none !important;
+  .banner-card {
+    max-height: 300px;
+    max-width: 1028px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+    margin: 0 auto;
+    padding: 0;
+    p {
+      font-weight: 600;
+      font-size: 40px;
+      color: white;
+      top: 50%;
+      margin-bottom: 0;
+    }
+    &.tickets {
+      height: 65%;
+      background: image-url("Banner1.png");
+      background-size: cover;
+      background-position: 50% 50%;
+      .banner-date {
+        font-weight: 100;
+        font-size: 20px;
+        padding-bottom: 5px;
+      }
+      .banner-cta-text {
+        font-size:30px;
+        padding: 10px;
+        border-radius: 0;
+        border: 1px solid white;
+      }
+      .banner-cta-text:hover {
+        background-color: #3d404a8a;
+      }
+    }
+    &.info {
+      height: 35%;
+      background: image-url("necro.jpg");
+      background-size: cover;
+      background-position: 50% 50%;
+    }
   }
 }
 
