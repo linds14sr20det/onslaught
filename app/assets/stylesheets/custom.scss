@@ -184,7 +184,8 @@ span.picture {
       margin-bottom: 0;
     }
     &.tickets {
-      height: 65%;
+      height: 50%;
+      min-height: 120px;
       background: image-url("Banner1.png");
       background-size: cover;
       background-position: 50% 50%;
@@ -204,7 +205,7 @@ span.picture {
       }
     }
     &.info {
-      height: 35%;
+      height: 45%;
       background: image-url("necro.jpg");
       background-size: cover;
       background-position: 50% 50%;
