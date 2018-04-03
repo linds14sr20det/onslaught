@@ -186,7 +186,7 @@ span.picture {
     &.tickets {
       height: 50%;
       min-height: 120px;
-      background: image-url("Banner1.png");
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("mike_stormcast.jpg");
       background-size: cover;
       background-position: 50% 50%;
       .banner-date {
@@ -206,7 +206,7 @@ span.picture {
     }
     &.info {
       height: 45%;
-      background: image-url("necro.jpg");
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("greyfax.jpg");
       background-size: cover;
       background-position: 50% 50%;
     }

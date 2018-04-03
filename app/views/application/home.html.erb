@@ -1,5 +1,6 @@
 <% provide(:title, 'Welcome') %>
 <% provide(:meta_description, t('seo.home')) %>
+
 <% unless Cohort.active.blank? %>
   <%= link_to tickets_path, class: "banner" do %>
     <div class="banner-card tickets">
