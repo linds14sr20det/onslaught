@@ -42,6 +42,8 @@ gem 'font-awesome-rails'
 
 gem 'paypal-sdk-rest'
 
+gem "tabs_on_rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

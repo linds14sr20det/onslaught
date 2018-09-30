@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180930221404) do
     t.string   "attachment_url"
   end
 
-  create_table "infos", force: :cascade do |t|
+  create_table "infos", id: :integer, default: -> { "nextval('info_id_seq'::regclass)" }, force: :cascade do |t|
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,14 +78,23 @@ ActiveRecord::Schema.define(version: 20180930221404) do
     t.index ["system_id"], name: "index_round_individual_on_system_id", using: :btree
   end
 
+  create_table "system_bundles", force: :cascade do |t|
+    t.string   "title"
+    t.string   "descriptive_date"
+    t.string   "description"
+    t.string   "discount"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "systems", force: :cascade do |t|
     t.string   "title"
     t.string   "descriptive_date"
     t.string   "description"
     t.integer  "max_players"
-    t.decimal  "cost",             precision: 8, scale: 2
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.decimal  "cost"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "cohort_id"
     t.datetime "start_date"
     t.integer  "rounds"

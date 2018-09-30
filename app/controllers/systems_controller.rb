@@ -3,6 +3,6 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
-    render
+    @registrants = @system.registrants.paid
   end
 end
