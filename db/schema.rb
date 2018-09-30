@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930202429) do
+ActiveRecord::Schema.define(version: 20180930221404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 20180930202429) do
     t.datetime "updated_at",                               null: false
     t.integer  "cohort_id"
     t.datetime "start_date"
+    t.integer  "rounds"
+    t.integer  "current_round"
     t.index ["cohort_id"], name: "index_systems_on_cohort_id", using: :btree
   end
 

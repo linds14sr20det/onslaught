@@ -34,7 +34,7 @@ class CohortsController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to cohorts_path
     else
-      redirect_to edit_cohorts_path(@cohort)
+      redirect_to edit_cohort_path(@cohort)
     end
   end
 
@@ -50,7 +50,7 @@ class CohortsController < ApplicationController
   private
 
     def cohort_params
-      params.require(:cohort).permit(:start_at, :end_at, :descriptive_date, :active, :attachment_url, systems_attributes: [:id, :title, :description, :descriptive_date, :start_date, :max_players, :cost, :_destroy])
+      params.require(:cohort).permit(:start_at, :end_at, :descriptive_date, :active, :attachment_url, systems_attributes: [:id, :title, :description, :descriptive_date, :start_date, :max_players, :cost, :rounds, :_destroy])
     end
 
     def set_s3_direct_post
