@@ -1,7 +1,7 @@
 <tr>
   <td><%= cohort.start_at.strftime("%B %d, %Y") %></td>
   <td><%= cohort.end_at.strftime("%B %d, %Y") %></td>
-  <td><%= link_to 'Tournament Details', registrants_path(cohort_id: cohort.id) %>
+  <td><%= link_to 'view systems', registrants_path(cohort_id: cohort.id) %>
     | <%= link_to 'edit', edit_cohort_path(cohort) %>
-    | <%= link_to "delete", cohort, method: :delete, data: { confirm: "You sure?" } %></td>
+    | <%= link_to 'delete', cohort, method: :delete, data: { confirm: "You sure?" } %></td>
 </tr>

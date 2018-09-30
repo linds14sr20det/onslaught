@@ -1,5 +1,6 @@
 <h2><%= @system.title %></h2>
 <ul class="nav nav-tabs">
-  <!-- Round calculation goes here -->
-  <li role="presentation" class="active"><a href="#">Round 1</a></li>
+  <% (1..@system.rounds).each do |round| %>
+    <li role="presentation" class="active"><a href="#">Round <%= round %></a></li>
+  <% end %>
 </ul>
