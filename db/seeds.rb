@@ -49,7 +49,7 @@ if Rails.env == "development"
   )
 
   game = System.create!(
-    title: 'Test Game Poops',
+    title: 'Test Game',
     descriptive_date: 'right now',
     description: 'this is a test game',
     max_players: 40,
