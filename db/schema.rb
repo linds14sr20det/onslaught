@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20180321050913) do
     t.string   "attachment_url"
   end
 
-  create_table "infos", force: :cascade do |t|
+  create_table "infos", id: :integer, default: -> { "nextval('info_id_seq'::regclass)" }, force: :cascade do |t|
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20180321050913) do
     t.string   "descriptive_date"
     t.string   "description"
     t.integer  "max_players"
-    t.decimal  "cost",             precision: 8, scale: 2
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.decimal  "cost"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "cohort_id"
     t.datetime "start_date"
     t.index ["cohort_id"], name: "index_systems_on_cohort_id", using: :btree
