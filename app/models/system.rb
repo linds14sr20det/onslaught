@@ -4,7 +4,7 @@ class System < ApplicationRecord
   has_many :registrants, :dependent => :restrict_with_error
   accepts_nested_attributes_for :attachment, reject_if: :all_blank, allow_destroy: true
   before_destroy :check_for_registrants
-  validates :rounds, numericality: {less_than_or_equal_to: 15}
+  validates :rounds, presence:true, numericality: {less_than_or_equal_to: 15}
 
 
 
