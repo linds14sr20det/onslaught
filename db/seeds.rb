@@ -38,3 +38,35 @@ end
 # end
 #
 # users = User.order(:created_at).take(6)
+
+#Create seed cohort, seed system, and 40 seed registrants
+if Rails.env == "development"
+  event = Cohort.create!(
+    start_at: Time.zone.now,
+    end_at: Time.zone.now + 1.year,
+    descriptive_date: "immediately",
+    active: true
+  )
+
+  game = System.create!(
+    title: 'Test Game',
+    descriptive_date: 'right now',
+    description: 'this is a test game',
+    max_players: 40,
+    cost: 30,
+    cohort: event,
+    start_date: Time.zone.now
+  )
+
+  40.times do |n|
+    name = Faker::Name.name
+    email = "example-#{n+1}@railstutorial.org"
+    Registrant.create!(
+      name: name,
+      email: email,
+      paid: true,
+      system: game
+    )
+  end
+
+end
