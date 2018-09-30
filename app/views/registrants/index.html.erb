@@ -10,7 +10,7 @@
       <div class='page-header'>
         <div class='btn-toolbar pull-right'>
           <div class='btn-group'>
-            <%= link_to "Manage Tournament", system_path(system.id), class: "btn btn-default"%>
+            <%= link_to "Manage Tournament", system_path(system.id, { round: (system.current_round.present? ? system.current_round : 1) }), class: "btn btn-default"%>
             <%= link_to "Add Player", new_registrant_path(system_id: system.id), class: "btn btn-primary"%>
           </div>
         </div>

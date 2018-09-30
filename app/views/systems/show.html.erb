@@ -1,6 +1,10 @@
 <h2><%= @system.title %></h2>
 <ul class="nav nav-tabs">
   <% (1..@system.rounds).each do |round| %>
-    <li role="presentation" class="active"><a href="#">Round <%= round %></a></li>
+    <li class="<%= round == @round_number ? 'active' : '' %>" role="presentation">
+      <%= link_to "Round #{round}", system_path(@system.id, { round: round }), class: "btn btn-default"%>
+    </li>
   <% end %>
 </ul>
+
+<%= render 'round' %>
