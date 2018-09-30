@@ -1,0 +1,3 @@
+class Pairing < ApplicationRecord
+
+end

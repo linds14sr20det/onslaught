@@ -1,0 +1,3 @@
+class RoundIndividual < ApplicationRecord
+
+end

@@ -1,0 +1,3 @@
+class RoundAggregate < ApplicationRecord
+
+end

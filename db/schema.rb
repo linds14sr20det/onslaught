@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930221404) do
+ActiveRecord::Schema.define(version: 20180930232659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,20 @@ ActiveRecord::Schema.define(version: 20180930221404) do
     t.string   "attachment_url"
   end
 
-  create_table "infos", id: :integer, default: -> { "nextval('info_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "infos", force: :cascade do |t|
     t.string   "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pairings", force: :cascade do |t|
+    t.integer "player_one_id"
+    t.integer "player_two_id"
+    t.integer "system_id"
+    t.integer "round"
+    t.index ["player_one_id"], name: "index_pairings_on_player_one_id", using: :btree
+    t.index ["player_two_id"], name: "index_pairings_on_player_two_id", using: :btree
+    t.index ["system_id"], name: "index_pairings_on_system_id", using: :btree
   end
 
   create_table "registrants", force: :cascade do |t|
@@ -73,18 +83,11 @@ ActiveRecord::Schema.define(version: 20180930221404) do
     t.boolean "win"
     t.boolean "loss"
     t.boolean "draw"
+    t.integer "round_aggregate_id"
     t.index ["opponent_id"], name: "index_round_individual_on_opponent_id", using: :btree
     t.index ["player_id"], name: "index_round_individual_on_player_id", using: :btree
+    t.index ["round_aggregate_id"], name: "index_round_individual_on_round_aggregate_id", using: :btree
     t.index ["system_id"], name: "index_round_individual_on_system_id", using: :btree
-  end
-
-  create_table "system_bundles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "descriptive_date"
-    t.string   "description"
-    t.string   "discount"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
   end
 
   create_table "systems", force: :cascade do |t|
@@ -92,9 +95,9 @@ ActiveRecord::Schema.define(version: 20180930221404) do
     t.string   "descriptive_date"
     t.string   "description"
     t.integer  "max_players"
-    t.decimal  "cost"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.decimal  "cost",             precision: 8, scale: 2
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "cohort_id"
     t.datetime "start_date"
     t.integer  "rounds"
@@ -118,8 +121,11 @@ ActiveRecord::Schema.define(version: 20180930221404) do
   end
 
   add_foreign_key "attachments", "systems"
+  add_foreign_key "pairings", "registrants", column: "player_one_id"
+  add_foreign_key "pairings", "registrants", column: "player_two_id"
   add_foreign_key "round_aggregate", "registrants", column: "player_id"
   add_foreign_key "round_individual", "registrants", column: "opponent_id"
   add_foreign_key "round_individual", "registrants", column: "player_id"
+  add_foreign_key "round_individual", "round_aggregate"
   add_foreign_key "systems", "cohorts"
 end
