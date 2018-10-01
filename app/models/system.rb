@@ -28,8 +28,9 @@ class System < ApplicationRecord
   end
 
   def get_round_pairings(round_number)
-    previous = true if round_number == 1
-    { current: [], previous: previous }
+    previous = true if round_number == 1 || !pairings.round(round_number - 1).empty?
+    pairing_list = pairings.round(round_number)
+    { current: pairing_list, previous: previous }
   end
 
   private

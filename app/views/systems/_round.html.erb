@@ -1,8 +1,0 @@
-<% if @pairings[:current].empty? %>
-  <% if @pairings[:previous] %>
-    <%= link_to "Create Pairings", generate_pairings_system_path(@system.id, { round: @round_number }), class: "btn btn-primary", method: :post%>
-  <% end %>
-  Pairings haven't been created for this round yet.
-<% else %>
-  <%= @pairings %>
-<% end %>

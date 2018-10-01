@@ -7,4 +7,22 @@
   <% end %>
 </ul>
 
-<%= render 'round' %>
+<% if @pairings[:current].empty? %>
+  <% if @pairings[:previous] %>
+    <%= link_to "Create Pairings", generate_pairings_system_path(@system.id, { round: @round_number }), class: "btn btn-primary", method: :post%>
+  <% end %>
+  Pairings haven't been created for this round yet.
+<% else %>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Player 1</th>
+      <th>Player 2</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      <%= render partial: 'pairing', collection: @pairings[:current] %>
+    </tbody>
+  </table>
+<% end %>
