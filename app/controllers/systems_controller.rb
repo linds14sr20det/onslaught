@@ -3,16 +3,15 @@ class SystemsController < ApplicationController
 
   def show
     @round_number = params[:round].to_i
-    #TODO GET THE REAL PAIRINGS HERE
-    @pairings = {current: [], previous: true}
     @system = System.find(params[:id])
+    @pairings = @system.get_round_pairings(@round_number)
     @registrants = @system.registrants.paid
   end
 
-  def create_pairings
+  def generate_pairings
     system = System.find(params[:id])
     round_number = params[:round].to_i
-    #TODO CREATE THE PAIRINGS HERE
+    system.generate_pairings(round_number)
     redirect_to system_path(system.id, { round: round_number })
   end
 end

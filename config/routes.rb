@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :cohorts
   resources :systems, only: [:show] do
-    post :create_pairings, on: :member
+    post :generate_pairings, on: :member
   end
   resources :tickets, only: [:index, :show] do
     post :add_to_cart, on: :member
