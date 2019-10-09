@@ -23,6 +23,7 @@ if Info.count == 0
       body: "Welcome to Onslaught!"
   )
 end
+
 # Create a bunch of test accounts
 
 # 99.times do |n|
@@ -55,6 +56,8 @@ if Rails.env == "development"
     max_players: 40,
     cost: 30,
     cohort: event,
+    rounds: 5,
+    current_round: 0,
     start_date: Time.zone.now
   )
 
@@ -68,5 +71,4 @@ if Rails.env == "development"
       system: game
     )
   end
-
 end
