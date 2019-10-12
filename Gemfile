@@ -42,6 +42,8 @@ gem 'render_anywhere', require: false
 gem 'font-awesome-rails'
 
 gem 'paypal-sdk-rest'
+gem 'pry-nav'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,7 +51,6 @@ gem 'paypal-sdk-rest'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'pry-nav'
 end
 
 gem "rake"
